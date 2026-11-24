@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7d2937">
+  <title>鎌倉幕府・ときめきタイムスリップ！</title>
+  <link rel="preload" as="image" href="assets/bg/hachimangu.png">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="scenarios.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <main>
+    <section id="title" class="screen title-screen" aria-labelledby="title-heading">
+      <div class="title-panel">
+        <div class="title-content">
+          <div class="title-crest" aria-hidden="true">源</div>
+          <h1 id="title-heading" tabindex="-1">
+            <span class="title-period">鎌倉幕府・</span>
+            <span>ときめき<br>タイムスリップ！</span>
+          </h1>
+          <p class="subtitle">源氏三代と恋の御恩と奉公</p>
+          <p class="premise">スマホを片手に、たどり着いたのは鎌倉。<br>あなたの言葉が、三人の将軍の心を動かす。</p>
+          <nav class="title-actions" aria-label="ゲームメニュー">
+            <button class="primary" data-screen="routes">はじめから <span aria-hidden="true">›</span></button>
+            <button data-slots="load">つづきから <span aria-hidden="true">›</span></button>
+            <button data-screen="gallery">エンディング一覧 <span aria-hidden="true">›</span></button>
+          </nav>
+        </div>
+      </div>
+      <div class="title-art" aria-hidden="true"><span>鶴岡八幡宮</span></div>
+    </section>
+
+    <section id="routes" class="screen paper-screen" aria-labelledby="routes-heading" hidden>
+      <header class="screen-heading">
+        <button class="back" data-screen="title">〈 タイトルへ</button>
+        <h2 id="routes-heading" tabindex="-1">誰と鎌倉を歩きますか？</h2>
+      </header>
+      <div id="route-cards" class="route-grid"></div>
+    </section>
+
+    <section id="play" class="screen game-screen" aria-labelledby="chapter" hidden>
+      <header class="game-top">
+        <button class="game-action home" data-screen="title">タイトル</button>
+        <div class="affection">
+          <div><label for="affection">好感度</label><output id="score">30%</output></div>
+          <meter id="affection" min="0" max="100" value="30">30%</meter>
+        </div>
+        <div class="game-actions">
+          <button class="game-action" data-slots="save">セーブ</button>
+          <button class="game-action" data-slots="load">ロード</button>
+        </div>
+      </header>
+      <div class="stage" id="stage">
+        <div class="scene-meta">
+          <h2 id="chapter" tabindex="-1"></h2>
+          <span id="progress"></span>
+        </div>
+        <img id="portrait" class="portrait" alt="">
+      </div>
+      <div class="conversation">
+        <button id="advance" class="dialogue" type="button">
+          <span id="speaker" class="speaker"></span>
+          <span id="dialogue-text"></span>
+          <span id="advance-icon" class="advance-icon" aria-hidden="true">▼</span>
+        </button>
+        <div id="choices" class="choices" aria-label="返答を選ぶ" hidden></div>
+      </div>
+    </section>
+
+    <section id="ending" class="screen ending-screen" aria-labelledby="ending-heading" hidden>
+      <article class="ending-card">
+        <p id="ending-kind" class="ending-kind"></p>
+        <h2 id="ending-heading" tabindex="-1"></h2>
+        <p id="ending-summary"></p>
+        <nav class="ending-actions" aria-label="次の画面">
+          <button class="primary" data-screen="routes">別の人と出会う</button>
+          <button data-screen="gallery">エンディング一覧</button>
+          <button data-screen="title">タイトルへ</button>
+        </nav>
+      </article>
+    </section>
+
+    <section id="gallery" class="screen paper-screen" aria-labelledby="gallery-heading" hidden>
+      <header class="screen-heading">
+        <button class="back" data-screen="title">〈 タイトルへ</button>
+        <h2 id="gallery-heading" tabindex="-1">エンディング一覧</h2>
+        <p id="gallery-count"></p>
+      </header>
+      <div id="gallery-list" class="gallery-grid"></div>
+    </section>
+  </main>
+
+  <dialog id="slots" aria-labelledby="slots-heading">
+    <div class="dialog-heading">
+      <h2 id="slots-heading"></h2>
+      <form method="dialog"><button aria-label="閉じる">×</button></form>
+    </div>
+    <div id="slot-list" class="slot-list"></div>
+    <p id="slot-status" role="status" class="slot-status"></p>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
