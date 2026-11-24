@@ -9,3 +9,9 @@
 ## 技術
 
 HTML / CSS / Vanilla JavaScript。GitHub Pagesで公開できます。
+
+## QRコード
+
+スマートフォンで読み取るとゲームを開けます。
+
+![ゲームを開くQRコード](qr-code.png)
